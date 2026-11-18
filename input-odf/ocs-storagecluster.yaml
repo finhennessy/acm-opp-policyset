@@ -1,0 +1,127 @@
+apiVersion: ocs.openshift.io/v1
+kind: StorageCluster
+metadata:
+  annotations:
+    uninstall.ocs.openshift.io/cleanup-policy: delete
+    uninstall.ocs.openshift.io/mode: graceful
+  creationTimestamp: "2026-09-27T12:03:48Z"
+  finalizers:
+  - storagecluster.ocs.openshift.io
+  generation: 2
+  name: ocs-storagecluster
+  namespace: openshift-storage
+  resourceVersion: "512121"
+  uid: 58532303-6193-47b7-9f8f-ccc30b62bdca
+spec:
+  arbiter: {}
+  encryption:
+    keyRotation:
+      schedule: '@weekly'
+    kms: {}
+  externalStorage: {}
+  managedResources:
+    cephBlockPools: {}
+    cephCluster: {}
+    cephDashboard: {}
+    cephFilesystems: {}
+    cephNonResilientPools: {}
+    cephObjectStoreUsers: {}
+    cephObjectStores:
+      enableSTS: true
+    cephRBDMirror: {}
+    cephToolbox: {}
+  resources:
+    mds: {}
+    mgr: {}
+    mon: {}
+    noobaa-core:
+      limits:
+        cpu: "2"
+        memory: 8Gi
+      requests:
+        cpu: "1"
+        memory: 4Gi
+    noobaa-db:
+      limits:
+        cpu: "2"
+        memory: 8Gi
+      requests:
+        cpu: "1"
+        memory: 4Gi
+    noobaa-endpoint:
+      limits:
+        cpu: "2"
+        memory: 4Gi
+      requests:
+        cpu: "1"
+        memory: 2Gi
+    rgw: {}
+  storageDeviceSets:
+  - config: {}
+    count: 1
+    dataPVCTemplate:
+      metadata: {}
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 100Gi
+        storageClassName: gp3-csi
+        volumeMode: Block
+      status: {}
+    name: ocs-deviceset
+    placement: {}
+    portable: true
+    preparePlacement: {}
+    replica: 3
+    resources: {}
+status:
+  conditions:
+  - lastHeartbeatTime: "2026-09-27T12:03:48Z"
+    lastTransitionTime: "2026-09-27T12:03:48Z"
+    message: Version check successful
+    reason: VersionMatched
+    status: "False"
+    type: VersionMismatch
+  - lastHeartbeatTime: "2026-09-27T12:03:48Z"
+    lastTransitionTime: "2026-09-27T12:03:48Z"
+    message: Initializing StorageCluster
+    reason: Init
+    status: Unknown
+    type: ReconcileComplete
+  - lastHeartbeatTime: "2026-09-27T12:03:48Z"
+    lastTransitionTime: "2026-09-27T12:03:48Z"
+    message: Initializing StorageCluster
+    reason: Init
+    status: "False"
+    type: Available
+  - lastHeartbeatTime: "2026-09-27T12:03:48Z"
+    lastTransitionTime: "2026-09-27T12:03:48Z"
+    message: Initializing StorageCluster
+    reason: Init
+    status: "True"
+    type: Progressing
+  - lastHeartbeatTime: "2026-09-27T12:03:48Z"
+    lastTransitionTime: "2026-09-27T12:03:48Z"
+    message: Initializing StorageCluster
+    reason: Init
+    status: "False"
+    type: Degraded
+  - lastHeartbeatTime: "2026-09-27T12:03:48Z"
+    lastTransitionTime: "2026-09-27T12:03:48Z"
+    message: Initializing StorageCluster
+    reason: Init
+    status: Unknown
+    type: Upgradeable
+  images:
+    ceph:
+      desiredImage: registry.redhat.io/rhceph/rhceph-9-rhel9@sha256:4f7d213a46862e8cfd709a4fdf3f0ffc29e7330fc35641c1640ed642ea3b9354
+    noobaaCore:
+      desiredImage: registry.redhat.io/odf4/mcg-core-rhel9@sha256:806f470cd0af11f180ef41c1546f67fbe326c7044955859df7b3b9541648692b
+    noobaaDB:
+      desiredImage: registry.redhat.io/rhel9/postgresql-16@sha256:a50e64e65c0e7f6a59d4b0a4f7712ba1013b8904ee9ad0d442462c1595b42a87
+  kmsServerConnection: {}
+  phase: Progressing
+  storageProviderEndpoint: 172.30.87.190:50051
+  version: 4.22.4

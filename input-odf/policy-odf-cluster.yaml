@@ -1,0 +1,41 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: ConfigurationPolicy
+metadata:
+  name: policy-odf-cluster
+spec:
+  remediationAction: enforce
+  severity: high
+  object-templates-raw: |
+    - complianceType: musthave
+      objectDefinition:
+        apiVersion: ocs.openshift.io/v1
+        kind: StorageCluster
+        metadata:
+          name: ocs-storagecluster
+          namespace: openshift-storage
+        spec:
+          # Instructs ODF/OCS to deploy ONLY the Multicloud Object Gateway (NooBaa)
+          multiCloudGateway:
+            reconcileStrategy: "standalone"      
+            dbStorageClassName: gp3-csi
+          # # Defines the underlying storage provider parameters
+          # storageDeviceSets:
+          #   - name: noobaa-db-pool
+          #     count: 1                # Minimum required sets
+          #     replica: 1              # Adjustable depending on your HA needs
+          #     resources:
+          #       limits:
+          #         cpu: "2"
+          #         memory: "4Gi"
+          #       requests:
+          #         cpu: "1"
+          #         memory: "2Gi"
+          #     volumeClaimTemplates:
+          #       spec:
+          #         accessModes:
+          #           - ReadWriteOnce
+          #         resources:
+          #           requests:
+          #             storage: 50Gi   # Size for the NooBaa DB components
+          #         # Forces the usage of AWS gp3
+          #         storageClassName: gp3-csi
