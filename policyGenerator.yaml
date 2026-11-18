@@ -134,44 +134,44 @@ policies:
     manifests:
       - path: input-acm-observability/operator.yaml
   # Observability Policy - end
-  
-  # # ODF Policies - start
-  # - name: policy-odf
-  #   categories:
-  #     - SI System and Information Integrity
-  #   controls:
-  #     - SI-7 Software Firmware and Information Integrity
-  #   manifests:
-  #     - path: input-odf/policy-odf.yaml
-  # - name: policy-odf-cluster
-  #   categories:
-  #     - SI System and Information Integrity
-  #   controls:
-  #     - SI-7 Software Firmware and Information Integrity
-  #   dependencies:
-  #     - name: policy-odf
-  #   manifests:
-  #     - path: input-odf/policy-odf-cluster.yaml
-  # - name: policy-odf-status
-  #   categories:
-  #     - SI System and Information Integrity
-  #   controls:
-  #     - SI-7 Software Firmware and Information Integrity
-  #   dependencies:
-  #     - name: policy-odf
-  #   manifests:
-  #     - path: input-odf/policy-odf-status.yaml
-  #   remediationAction: inform
-  # - name: policy-odf-noobaa
-  #   categories:
-  #     - SI System and Information Integrity
-  #   controls:
-  #     - SI-7 Software Firmware and Information Integrity
-  #   dependencies:
-  #     - name: policy-odf-status
-  #   manifests:
-  #     - path: input-odf/policy-odf-noobaa.yaml
-  # # ODF Policies - end
+
+  # ODF Policies - start
+  - name: policy-odf
+    categories:
+      - SI System and Information Integrity
+    controls:
+      - SI-7 Software Firmware and Information Integrity
+    manifests:
+      - path: input-odf/policy-odf.yaml
+  - name: policy-odf-cluster
+    categories:
+      - SI System and Information Integrity
+    controls:
+      - SI-7 Software Firmware and Information Integrity
+    dependencies:
+      - name: policy-odf
+    manifests:
+      - path: input-odf/policy-odf-cluster.yaml
+  - name: policy-odf-status
+    categories:
+      - SI System and Information Integrity
+    controls:
+      - SI-7 Software Firmware and Information Integrity
+    dependencies:
+      - name: policy-odf
+    manifests:
+      - path: input-odf/policy-odf-status.yaml
+    remediationAction: inform
+  - name: policy-odf-noobaa
+    categories:
+      - SI System and Information Integrity
+    controls:
+      - SI-7 Software Firmware and Information Integrity
+    dependencies:
+      - name: policy-odf-status
+    manifests:
+      - path: input-odf/policy-odf-noobaa.yaml
+  # ODF Policies - end
 
   # Quay Policies - start
   - name: policy-install-quay
